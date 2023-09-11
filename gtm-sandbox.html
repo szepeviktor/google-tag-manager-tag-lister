@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Blank page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script disabled-src="https://www.googletagmanager.com/gtm.js?id=GTM-MAAA1BB2"></script>
+    <script src="https://www.googletagmanager.com/gtag/js?id=AW-123456789"></script>
+</head>
+<body>
+<h1>Blank page</h1>
+<p>
+    <a href="https://app.oitmstaging.com/login" target="_blank">Cross-domain link</a>
+</p>
+<form>
+    <label>
+        <code>google_tag_data.tidr.container = </code>
+        <input type="text" id="target-id" name="target-id" size="50">
+    </label>
+</form>
+
+<pre style="padding: 8px; background-color: lightgray;">
+    window.dataLayer.push({
+        'gtm.start': new Date().getTime(),
+        'event': 'gtm.js'
+    });
+    // Same functionality as a shortcut
+    gtag('js', new Date());
+
+    gtag('config', 'AW-123456789');
+
+    gtag('config', 'GTM-MAAA1BB2');
+</pre>
+
+<script>
+    // Write container ID-s into the input element
+    document.addEventListener("DOMContentLoaded", function (event) {
+        setInterval(function () {
+            var targetIds = typeof google_tag_data === "object" ? Object.keys(google_tag_data.tidr.container) : ["n/a"];
+            document.getElementById("target-id").value = targetIds.join(" ");
+        }, 1000)
+    });
+
+    // Initialize Google's data layer
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        window.dataLayer.push(arguments);
+    }
+</script>
+</body>
+</html>
