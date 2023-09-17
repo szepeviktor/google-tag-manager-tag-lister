@@ -5,7 +5,7 @@
     <title>GTM sandbox</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script disabled-src="https://www.googletagmanager.com/gtm.js?id=GTM-MAAA1BB2"></script>
+    <script data-disabled-src="https://www.googletagmanager.com/gtm.js?id=GTM-MAAA1BB2"></script>
     <script src="https://www.googletagmanager.com/gtag/js?id=AW-123456789"></script>
 </head>
 <body>
@@ -14,39 +14,41 @@
     <a href="https://subdomain.example.com/" target="_blank">Cross-domain link</a>
 </p>
 <form>
-    <label>
-        <code>google_tag_data.tidr.container = </code>
-        <input type="text" id="target-id" name="target-id" size="50">
-    </label>
+    <div><label for="container-list"><code>google_tag_data.tidr.container</code></label></div>
+    <div><textarea id="container-list" name="container-list" rows="5" cols="60" readonly></textarea></div>
+
+    <div><label for="cookie-list">Cookies</label></div>
+    <div><textarea id="cookie-list" name="cookie-list" rows="5" cols="60" readonly></textarea></div>
 </form>
 
 <pre style="padding: 8px; background-color: lightgray;">
-    window.dataLayer.push({
-        'gtm.start': new Date().getTime(),
-        'event': 'gtm.js'
-    });
-    // Same functionality as a shortcut
-    gtag('js', new Date());
+window.dataLayer.push({
+    'gtm.start': new Date().getTime(),
+    'event': 'gtm.js'
+});
+// Same functionality as a shortcut
+gtag('js', new Date());
 
-    gtag('config', 'AW-123456789');
+gtag('config', 'AW-123456789');
 
-    gtag('config', 'GTM-MAAA1BB2');
+gtag('config', 'GTM-MAAA1BB2');
 </pre>
 
 <script>
-    // Write container ID-s into the input element
-    document.addEventListener("DOMContentLoaded", function (event) {
-        setInterval(function () {
-            var targetIds = typeof google_tag_data === "object" ? Object.keys(google_tag_data.tidr.container) : ["n/a"];
-            document.getElementById("target-id").value = targetIds.join(" ");
-        }, 1000)
-    });
+// Write container ID-s into the input element
+document.addEventListener("DOMContentLoaded", function (event) {
+    setInterval(function () {
+        var containerIds = typeof google_tag_data === "object" ? Object.keys(google_tag_data.tidr.container) : ["n/a"];
+        document.getElementById("container-list").value = containerIds.join("\n");
+        document.getElementById("cookie-list").value = document.cookie.split(";").map((cookie) => cookie.trim()).join("\n");
+    }, 1000)
+});
 
-    // Initialize Google's data layer
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        window.dataLayer.push(arguments);
-    }
+// Initialize Google's data layer
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+    window.dataLayer.push(arguments);
+}
 </script>
 </body>
 </html>
