@@ -14,3 +14,7 @@ Use the customized sandbox HTML page
 - to watch loaded containers
 - to watch tracking cookies
 - to analyze cross-domain tracking
+
+## Product prefixes
+
+See [Analyze existing tag configurations](https://developers.google.com/tag-platform/devguides/existing#gtag)
