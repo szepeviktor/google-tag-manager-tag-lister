@@ -10,13 +10,14 @@ set -e
 
 grep -E '^[A-Z]+-[0-9A-Z]{7,}$' <<<"${TAG_ID}"
 
-if [ "${TAG_ID:0:4}" == "GTM-"; then
+if [ "${TAG_ID:0:4}" == "GTM-" ]; then
     wget -O "${TAG_ID}.js" "https://www.googletagmanager.com/gtm.js?id=${TAG_ID}"
 else
     wget -O "${TAG_ID}.js" "https://www.googletagmanager.com/gtag/js?id=${TAG_ID}"
 fi
 
 # Extract JSON object
+# shellcheck disable=SC2002
 cat "${TAG_ID}.js" \
     | sed -e '/^var data = {$/,/^};$/!d' \
     | sed -e '1s/^var data = //;$s/;$//' \
