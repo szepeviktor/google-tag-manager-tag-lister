@@ -30,6 +30,10 @@ window.dataLayer.push({
 gtag('js', new Date());
 
 gtag('config', 'AW-123456789');
+gtag('config', 'AW-123456789', {
+    'cookie_domain': window.location.hostname,
+    'cookie_flags': 'SameSite=None;Secure'
+});
 
 gtag('config', 'GTM-MAAA1BB2');
 </pre>
