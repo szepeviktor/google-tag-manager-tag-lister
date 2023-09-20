@@ -18,3 +18,7 @@ Use the customized sandbox HTML page
 ## Product prefixes
 
 See [Analyze existing tag configurations](https://developers.google.com/tag-platform/devguides/existing#gtag)
+
+## Google Analytics 4 configuration
+
+See the [reference](https://developers.google.com/analytics/devguides/collection/ga4/reference/config)
