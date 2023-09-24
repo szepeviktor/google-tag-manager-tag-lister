@@ -8,7 +8,7 @@ TAG_ID="$1"
 
 set -e
 
-grep -E '^[A-Z]+-[0-9A-Z]{7,}$' <<<"${TAG_ID}"
+grep -E '^[A-Z]+-[0-9A-Z]{6,}$' <<<"${TAG_ID}"
 
 if [ "${TAG_ID:0:4}" == "GTM-" ]; then
     wget -O "${TAG_ID}.js" "https://www.googletagmanager.com/gtm.js?id=${TAG_ID}"
