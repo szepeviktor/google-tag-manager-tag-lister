@@ -25,7 +25,7 @@ See the [reference](https://developers.google.com/analytics/devguides/collection
 
 ## JavaScript for Google Tag Manager
 
-```javascript
+```html
 <!-- Google Tag Manager -->
 <script>
 (function (w, d, s, l, i) {
